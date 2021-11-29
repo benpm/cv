@@ -1,0 +1,286 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Curriculum Vitae
+%
+% Source: http://www.howtotex.com/
+% Feel free to distribute this template, but please keep the
+% referal to HowToTeX.com.
+% Date: July 2011
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+							
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{geometry}
+	\textheight=700px                    % Saving trees ;-)
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{tabularx}
+% \usepackage{showframe}
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+%%% Custom font
+%%% ------------------------------------------------------------
+\usepackage[sfdefault]{cabin}
+\usepackage[T1]{fontenc}
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
+
+%%% Colors
+%%% ------------------------------------------------------------
+% https://coolors.co/fdfffc-235789-c1292e-f1d302-161925
+\definecolor{yel}{HTML}{F1D302}
+\definecolor{red}{HTML}{C1292E}
+\definecolor{blu}{HTML}{235789}
+\definecolor{blk}{HTML}{161925}
+\hypersetup{colorlinks=true,urlcolor=red}
+
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+
+\AtBeginDocument{\globalcolor{blk}}
+
+\newtcolorbox{bigredbox}[1][]{
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colback=red,
+  boxrule=0.8pt,
+  #1
+}
+
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
+\newcommand{\sym}{\raisebox{1pt}{$\blacktriangleright$}}
+\newcommand{\showurl}[1]{\href{#1}{#1}}
+
+\newcommand{\MyName}[5]{ % Name
+	\setlength\parskip{0cm}
+	\noindent
+	\begin{minipage}[c]{ 4.1cm }
+		\begin{tcolorbox}[colback=yel,colframe=yel,halign title=left,boxsep=0mm,left=2mm,flush left]
+			\color{blk}
+			\fontsize{90pt}{90pt}\selectfont \usefont{OT1}{phv}{b}{n} cv
+		\end{tcolorbox}
+	\end{minipage}
+	\begin{minipage}[t]{ 10.6cm }
+		\vspace{-3.2em}
+		\hfill \huge \usefont{OT1}{phv}{b}{n} #1
+		\par \hfill \large \usefont{OT1}{phv}{m}{n} \textit{#2} % Subtitle
+		\par \hfill \small \usefont{OT1}{phv}{m}{n} \textit{#3} % Address line 1
+		\par \hfill \small \usefont{OT1}{phv}{m}{n} \textit{#4} % Address line 2
+		\par \hfill \small \usefont{OT1}{phv}{m}{n} \textit{#5} % Address line 3
+	\end{minipage}
+	\par \normalsize \normalfont
+}
+
+\newcommand{\NewPart}[1]{\section*{\sym \mbox{} \MakeUppercase{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par
+		\sepspace}
+
+\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+		\noindent
+		\begin{tabularx}{\linewidth}{ p{7em} X }
+			\noindent
+			\begin{minipage}[t]{7em}
+				\textbf{#1}
+			\end{minipage} &
+			\noindent \normalfont \small #2
+		\end{tabularx}
+		\sepspace}
+		
+\newcommand{\EducationEntry}[5]{
+		\Large \noindent \textbf{#1} \hfill \\   % Degree
+		\normalsize \noindent \textit{#2} \hfill	  % School
+		\colorbox{yel}{\color{blk}#3} \par  % Duration
+		\noindent \textit{#4} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #5 % Description
+		\normalsize \par
+		\sepspace}
+
+\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
+		\noindent \textbf{#1} \hfill      % Jobname
+		\colorbox{yel}{\color{blk}#2} \par  % Duration
+		\noindent \textit{#3} \par              % Company
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par
+		\sepspace}
+
+%%% ------------------------------------------------------------
+%%% BEGIN DOCUMENT
+%%% ------------------------------------------------------------
+
+\begin{document}
+
+\MyName{BENJAMIN MASTRIPOLITO}{benpm@alumni.nmt.edu}{51 Young Rd}{Tijeras, NM 87059}{USA}
+
+\sepspace
+
+
+%%% Education
+%%% ------------------------------------------------------------
+\NewPart{Education}{}
+
+\EducationEntry{BS in Computer Science}{New Mexico Institute of Mining and Technology (NMT)}{May 2020}{3.79 GPA}
+
+
+%%% Work experience
+%%% ------------------------------------------------------------
+\NewPart{Work Experience}{}
+
+\WorkEntry{Post-Baccalaureate Student}
+	{June 2020 - Present}{Los Alamos National Labs}{\noindent
+	\begin{itemize}
+		\item Research on parallel interpolation algorithms for physical equation-of-state data
+			under mentorship of Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov})
+		\item Developed Python plotting package for physical equation-of-state data
+		\item Rewrote a multi-project Jenkins CI/CD pipeline in GitLab CI
+	\end{itemize}
+}
+
+\WorkEntry{Parallel Computing Summer Research Internship}
+	{June 2019 - Aug 2019}{Los Alamos National Labs}{\noindent
+	\begin{itemize}
+		\item Worked as a student in the Parallel Computing Summer Research Internship at LANL researching performance
+			analysis techniques on parallel algorithms, under mentorship of Dr. Rao Garimella (\textit{rao@lanl.gov})
+	\end{itemize}	
+}
+
+\WorkEntry{Contract Programmer}
+	{Jan 2019 - May 2020}{New Mexico Institute of Mining and Technology}{\noindent
+	\begin{itemize}
+		\item Worked with Dr. Denis Cohen (denis.cohen@gmail.com) developing a parallel, unstructured-mesh-based program for
+			simulation of landslides using C++ and OpenMP
+	\end{itemize}
+}
+
+\WorkEntry{Student Worker - Mechanical Engineering Department}
+	{Aug 2018 - Mar 2019}{New Mexico Institute of Mining and Technology}{\noindent
+	\begin{itemize}
+		\item Worked with Dr. Ashok Ghosh (ashok.ghosh@nmt.edu) on contract work to develop a web-based monitoring
+			system for sea vessels.
+	\end{itemize}
+}
+
+\WorkEntry{Student Worker - ITC}
+	{May 2018 - Aug 2018}{New Mexico Institute of Mining and Technology}{\noindent
+	\begin{itemize}
+		\item Performed duties for the Information Technology and Communications department (ITC)
+			involving maintenance of IT infrastructure on campus at NMT.
+	\end{itemize}
+}
+
+\WorkEntry{Grader - Intro to C Programming}
+	{Sep 2017 - June 2018}{New Mexico Institute of Mining and Technology}{\noindent
+	\begin{itemize}
+		\item Graded students' code assignments in the Intro to C Programming course
+	\end{itemize}
+}
+
+
+%%% Projects
+%%% ------------------------------------------------------------
+\NewPart{Projects}{}
+
+\WorkEntry{Petting Zoo}{Ongoing}{\showurl{https://github.com/TheFutureGadgetsLab/PettingZoo}}{
+	Machine learning environment with procedurally generated platformer levels.
+	Supports training various types of neural networks with genetic algorithms.
+}
+
+\WorkEntry{Petri}{Ongoing}{\showurl{https://github.com/TheFutureGadgetsLab/Petri}}{
+	High performance parallel particle simulator and renderer written in Rust with wgpu.
+}
+
+\WorkEntry{Cellarium}{Ongoing}{\showurl{https://github.com/benpm/webgl-cellular-automata}}{
+	WebGL cellular automata simulator which allows random generation of novel multi-state rules.
+	Simulation is performed entirely within a fragment shader, allowing for large simulations.
+	Web app UI built with Vue.
+}
+
+\WorkEntry{CUDA / OpenGL Raytracer}{2020}{\showurl{https://github.com/benpm/cuda-raytracer}}{
+	Created a parallel raytracing program using NVIDIA CUDA C++ and OpenGL.
+	Supports refractive materials, diffuse lighting, antialiasing, and emissive materials.
+}
+
+\WorkEntry{LD48 Recursive Puzzle Game}{2021}{\showurl{https://github.com/benpm/ldjam48}}{
+	Puzzle game where the level structure is manipulated through interactive objects,
+	allowing for levels which contain themselves.
+	Made in 72 hours for the 48th Ludum Dare game jam, where it won 2nd place in the Innovation category
+	out of almost 4000 submissions.
+}
+
+
+%%% Publications
+%%% ------------------------------------------------------------
+\NewPart{Publications}{}
+
+\WorkEntry{\href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{SIMD-Optimized Search Over Sorted Data}}
+	{November 2021}{Los Alamos National Laboratory}
+	{Exploration of using instruction-level parallelism to enhance the performance of search algorithms over sorted data.}
+
+
+%%% Skills
+%%% ------------------------------------------------------------
+\NewPart{Skills}{}
+
+\SkillsEntry{Programming Languages}{
+	Confident in C, C++, Python, and Javascript.
+	Some experience with Java, Rust, C\#, and Typescript.
+}
+
+\SkillsEntry{Software}{
+	Visual Studio, Unity 3D, Blender, GDB, Valgrind
+}
+
+\SkillsEntry{Technologies}{
+	Linux, OpenGL, GitLab CI/CD, CUDA, CMake, Meson, OpenMP, Numpy, Vue.js
+}
+
+\SkillsEntry{Notable Courses Taken}{
+	Intro to OpenGL, Algorithms \& Data Structures,
+	High Performance Computing, Software Engineering,
+	Machine Learning
+}
+
+
+\end{document}
