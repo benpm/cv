@@ -152,7 +152,7 @@
 
 \begin{document}
 
-\MyName{BENJAMIN MASTRIPOLITO}{benpm@alumni.nmt.edu}{1304 E 900 S Apt 2}{Salt Lake City, UT 84105}{USA}
+\MyName{BENJAMIN MASTRIPOLITO}{benpm@cs.utah.edu}{1304 E 900 S Apt 2}{Salt Lake City, UT 84105}{USA}
 
 \sepspace
 
@@ -188,36 +188,42 @@
 	\end{itemize}	
 }
 
-\WorkEntry{Contract Programmer}
+\WorkEntry{Research Assistant}
 	{Jan 2019 - Current}{New Mexico Institute of Mining and Technology}{\noindent
 	\begin{itemize}
-		\item Worked with Dr. Denis Cohen (denis.cohen@gmail.com) with his research in developing a parallel, unstructured-mesh-based program for simulation of landslides using C++ and OpenMP
+		\item Worked with Dr. Denis Cohen (denis.cohen@gmail.com) in developing a parallel, unstructured-mesh-based program for simulation of landslides using C++ and OpenMP
 	\end{itemize}
 }
 
-\WorkEntry{Student Worker - Mechanical Engineering Department}
-	{Aug 2018 - Mar 2019}{New Mexico Institute of Mining and Technology}{\noindent
-	\begin{itemize}
-		\item Worked with Dr. Ashok Ghosh (ashok.ghosh@nmt.edu) on contract work to develop a web-based monitoring
-			system for sea vessels.
-	\end{itemize}
-}
-
-\WorkEntry{Student Worker - ITC}
-	{May 2018 - Aug 2018}{New Mexico Institute of Mining and Technology}{\noindent
-	\begin{itemize}
-		\item Performed duties for the Information Technology and Communications department (ITC)
-			involving maintenance of IT infrastructure on campus at NMT.
-	\end{itemize}
-}
-
-% \WorkEntry{Grader - Intro to C Programming}
-% 	{Sep 2017 - June 2018}{New Mexico Institute of Mining and Technology}{\noindent
+% \WorkEntry{Student Worker - Mechanical Engineering Department}
+% 	{Aug 2018 - Mar 2019}{New Mexico Institute of Mining and Technology}{\noindent
 % 	\begin{itemize}
-% 		\item Graded students' code assignments in the Intro to C Programming course
+% 		\item Worked with Dr. Ashok Ghosh (ashok.ghosh@nmt.edu) on contract work to develop a web-based monitoring
+% 			system for sea vessels.
 % 	\end{itemize}
 % }
 
+% \WorkEntry{Student Worker - ITC}
+% 	{May 2018 - Aug 2018}{New Mexico Institute of Mining and Technology}{\noindent
+% 	\begin{itemize}
+% 		\item Performed duties for the Information Technology and Communications department (ITC)
+% 			involving maintenance of IT infrastructure on campus at NMT.
+% 	\end{itemize}
+% }
+
+
+%%% Publications
+%%% ------------------------------------------------------------
+\NewPart{Publications}{}
+
+\WorkEntry{\href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{SIMD-Optimized Search Over Sorted Data}}
+	{November 2021}{Los Alamos National Laboratory}
+	{Exploration of using instruction-level parallelism to enhance the performance of search algorithms over sorted data.}
+
+
+% p
+
+\pagebreak
 
 %%% Projects
 %%% ------------------------------------------------------------
@@ -229,12 +235,12 @@
 }
 
 \WorkEntry{Petri}{Ongoing}{\showurl{https://github.com/TheFutureGadgetsLab/Petri}}{
-	High performance parallel particle simulator and renderer written in Rust with wgpu.
+	High performance parallel particle simulator and renderer written in Rust with WebGPU backend.
 }
 
 \WorkEntry{Cellarium}{Ongoing}{\showurl{https://github.com/benpm/cellarium}}{
 	WebGL cellular automata simulator which allows random generation of novel multi-state rules.
-	Simulation is performed entirely within a fragment shader, allowing for large simulations.
+	Simulation is written in an optimized GLSL fragment shader, allowing for large simulations.
 	Web app UI built with Vue.
 }
 
@@ -251,14 +257,6 @@
 }
 
 
-%%% Publications
-%%% ------------------------------------------------------------
-\NewPart{Publications}{}
-
-\WorkEntry{\href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{SIMD-Optimized Search Over Sorted Data}}
-	{November 2021}{Los Alamos National Laboratory}
-	{Exploration of using instruction-level parallelism to enhance the performance of search algorithms over sorted data.}
-
 
 %%% Skills
 %%% ------------------------------------------------------------
@@ -270,18 +268,17 @@
 }
 
 \SkillsEntry{Software}{
-	Visual Studio, Unity 3D, Blender, GDB, Valgrind
+	Visual Studio, Unreal Engine, Blender, GDB, Valgrind
 }
 
 \SkillsEntry{Technologies}{
-	Linux, OpenGL, GitLab CI/CD, CUDA, CMake, Meson, OpenMP, Numpy, Vue.js
+	Linux, OpenGL, CUDA, CMake, Meson, OpenMP, NumPy, Vue.js, WebGPU
 }
 
-\SkillsEntry{Notable Courses Taken}{
-	Intro to OpenGL, Algorithms \& Data Structures,
-	High Performance Computing, Software Engineering,
-	Machine Learning
+\SkillsEntry{Notable Courses}{
+	Intro to OpenGL, High Performance Computing, 
+	Machine Learning, Image Processing, Computer Graphics,
+	Computational Geometry, Visualization for Scientific Data
 }
-
 
 \end{document}
