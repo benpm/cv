@@ -1,5 +1,5 @@
 # Curriculum Vitae
-My CV in LaTeX
+My resume in LaTeX
 
 ## Required Packages
 Install with tlmgr:

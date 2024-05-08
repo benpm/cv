@@ -47,7 +47,7 @@
 \usepackage[T1]{fontenc}
 
 % Adjust margins
-\geometry{left=1cm, top=0.1cm, right=1cm, bottom=1cm}
+\geometry{left=1cm, top=1cm, right=1cm, bottom=1cm}
 
 %%% Custom sectioning (sectsty package)
 %%% ------------------------------------------------------------
@@ -85,6 +85,13 @@
 \setlist[itemize]{leftmargin=*}
 \setlist[itemize,1]{label=\textbullet}
 
+\newtcbox{\Gbox}{
+	colback=clr_grey,
+	colframe=clr_grey,
+	nobeforeafter,
+	box align=base,
+	size=fbox}
+
 %%% Macros
 %%% ------------------------------------------------------------
 \newlength{\spacebox}
@@ -94,12 +101,9 @@
 
 \newcommand{\MyName}[5]{ % Name
 	\noindent
-	\begin{tcolorbox}[colback=yel,colframe=yel,halign title=left,boxsep=0mm]
-		\huge \usefont{OT1}{phv}{b}{n} #1 \hfill
-		\large \usefont{OT1}{phv}{m}{n} \textit{#2}
-		\vspace{-2pt}
-	\end{tcolorbox}
-	\vspace{-8pt}
+	\tcbset{colback=yel,colframe=yel,boxsep=0mm,on line}
+	\tcbox{\huge \usefont{OT1}{phv}{b}{n} #1} \hfill
+	\Large \usefont{OT1}{phv}{m}{n} \textit{#2}
 	\normalsize \normalfont
 }
 
@@ -120,8 +124,7 @@
 
 \newcommand{\EducationEntry}[5]{
 		\large \noindent \textbf{#1} \hfill
-		\tcbset{colback=clr_grey,colframe=clr_grey,nobeforeafter,box align=base,size=fbox}
-		\tcbox{\small \color{clr_darkgrey}#3} \par
+		\Gbox{\small \color{clr_darkgrey}#3} \par
 		\normalsize \noindent \textit{#2} \hfill	  % School
 		\noindent \textit{#4} \par        % School
 		\noindent\hangindent=2em\hangafter=0 \small #5 % Description
@@ -130,7 +133,14 @@
 
 \newcommand{\WorkEntry}[4]{
 		\noindent \large \textbf{#1} \small \textit{\color{clr_darkgrey} @ #3} \hfill
-		\noindent \colorbox{clr_grey}{\small \color{clr_darkgrey}#2} \par
+		\Gbox{\small \color{clr_darkgrey}#2} \par
+		\noindent \hangindent=0em\hangafter=0 \small #4
+		\normalsize
+		\sepspace}
+
+\newcommand{\ProjectEntry}[4]{
+		\noindent \large \textbf{\href{#2}{#1}} \hfill
+		\Gbox{\small \color{clr_darkgrey}#3} \par
 		\noindent \hangindent=0em\hangafter=0 \small #4
 		\normalsize
 		\sepspace}
@@ -141,7 +151,7 @@
 
 \begin{document}
 
-\MyName{Benjamin Mastripolito}{benpm@cs.utah.edu \(\star\) \showurl{https://benpm.github.io}}
+\MyName{Benjamin Mastripolito}{benpm@cs.utah.edu \(\star\) \href{https://benpm.github.io}{benpm.github.io}}
 
 \sepspace
 
@@ -168,30 +178,31 @@
 %%% ------------------------------------------------------------
 \NewPart{Work Experience}
 
-\WorkEntry{Research Assistant}
-{Fall 2023 - May 2024}{University of Utah}{\noindent
+\WorkEntry{Graduate Research Assistant}
+{Fall 2023 - ...}{University of Utah}{\noindent
 	\begin{itemize}
-		\item Research assistant under Dr. Cem Yuksel (\textit{cem@cemyuksel.com}) working on polygon-agnostic 3D modeling research in OpenGL and C++
+		\item Research with Dr. Cem Yuksel (\textit{cem@cemyuksel.com}) on building a more intuitive 3D modeling methodology
+		\item Co-wrote a 3D modeling application in C++ and OpenGL
+		\item Implemented space-efficient, GPU-accelerated half-edge mesh representation alongside a dynamic mesh data allocation system
+		\item Implemented mesh editing tools such as extrusion, scale, translate, rotate, manipulation of geometry using harmonic weight calculation to preserve mesh details
 	\end{itemize}
 }
 
 \WorkEntry{Post-Baccalaureate Student}
 {June 2020 - July 2022}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
-		\item Research on parallel interpolation algorithms for physical equation-of-state data
-		      under mentorship of Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov})
-		\item Developed Python plotting package for physical equation-of-state data
+		\item Research on parallel interpolation algorithms for physical equation-of-state data under mentorship of Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov})
 	\end{itemize}
 }
 
-\WorkEntry{Parallel Computing Summer Research Internship}
+\WorkEntry{Parallel Computing Research Internship}
 {June 2019 - Aug 2019}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
 		\item Worked as a student in the Parallel Computing Summer Research Internship at LANL researching performance analysis techniques on parallel algorithms, under mentorship of Dr. Rao Garimella (\textit{rao@lanl.gov})
 	\end{itemize}
 }
 
-\WorkEntry{Research Assistant}
+\WorkEntry{Undergraduate Research Assistant}
 {Jan 2019}{New Mexico Institute of Mining and Technology}{\noindent
 	\begin{itemize}
 		\item Worked with Dr. Denis Cohen (\textit{denis.cohen@gmail.com}) in developing a parallel, unstructured-mesh-based program for simulation of landslides using C++ and OpenMP
@@ -225,59 +236,52 @@
 
 %%% Projects
 %%% ------------------------------------------------------------
-\NewPart{Portfolio}
+\NewPart{Projects}
 
-\WorkEntry{Petting Zoo}{Ongoing}{\showurl{https://github.com/TheFutureGadgetsLab/PettingZoo}}{
-	Machine learning environment with procedurally generated platformer levels.
-	Supports training various types of neural networks with genetic algorithms.
+\ProjectEntry{Elastic Hair Simulation and Rendering}
+{https://github.com/alpers-git/StrandStorm}{2023}{
+	\begin{itemize}
+		\item Wrote OpenGL compute shader for generating and interpolating additional hair geometry from simulated guide hairs.
+		\item Implemented hair simulation using discrete elastic rods, and rigid-body collision using position-based dynamics.
+		\item Implemented deep opacity shadow maps for hair shading.
+	\end{itemize}
 }
 
-\WorkEntry{Petri}{Ongoing}{\showurl{https://github.com/TheFutureGadgetsLab/Petri}}{
-	High performance parallel particle simulator and renderer written in Rust with WebGPU backend.
+\ProjectEntry{GPU-Accelerated Surface Meshing}{https://github.com/benpm/gl_playground}{2023-2024}{
+	\begin{itemize}
+		\item Implemented the base surface nets algorithm for meshing implicit surfaces using OpenGL compute shaders.
+		\item Implemented surface geometry smoothing using a trilinear interpolation scheme.
+		\item All implementation done using OpenGL compute shaders.
+	\end{itemize}
+
 }
 
-\WorkEntry{Cellarium}{Ongoing}{\showurl{https://github.com/benpm/cellarium}}{
-	WebGL cellular automata simulator which allows random generation of novel multi-state rules.
-	Simulation is written in an optimized GLSL fragment shader, allowing for large simulations.
-	Web app UI built with Vue.
+\ProjectEntry{CPU Parallel Particle Simulation}
+{https://github.com/TheFutureGadgetsLab/petri}{2021}{
+	Co-developed a CPU-parallel particle simulator in Rust using WebGPU technology.
 }
 
-\WorkEntry{CUDA / OpenGL Raytracer}{2020}{\showurl{https://github.com/benpm/cuda-raytracer}}{
-	Created a parallel raytracing program using NVIDIA CUDA C++ and OpenGL.
-	Supports refractive materials, diffuse lighting, antialiasing, and emissive materials.
+\ProjectEntry{CUDA Raytracer}
+{https://github.com/benpm/cuda-raytracer}{2020}{
+	Created a parallel raytracing program using NVIDIA CUDA C++ and OpenGL. Supports refractive materials, diffuse lighting, antialiasing, and emissive materials.
 }
 
-\WorkEntry{LD48 Recursive Puzzle Game}{2021}{\showurl{https://github.com/benpm/ldjam48}}{
-	Puzzle game where the level structure is manipulated through interactive objects,
-	allowing for levels which contain themselves.
-	Made in 72 hours for the 48th Ludum Dare game jam, where it won 2nd place in the Innovation category
-	out of almost 4000 submissions.
+\ProjectEntry{WebGL Compact Cellular Automata}{https://github.com/benpm/cellarium}{2020}{
+	\begin{itemize}
+		\item Developed a new method for efficient storage and retrieval of arbitrary, multi-state cellular automata rules in a single texture.
+		\item Implemented an optimized WebGL shader to decode and simulate the automata in the browser.
+	\end{itemize}
 }
-
 
 
 %%% Skills
 %%% ------------------------------------------------------------
-\NewPart{Skills}
+\NewPart{Technical Skills}
 
-\SkillsEntry{C / C++}{
-	Extensive experience working in the C and C++ programming languages in both academic and professional settings.
-}
-
-\SkillsEntry{Graphics APIs}{
-	Experience with creating complex applications OpenGL, WebGL, WebGPU, CUDA, DirectX 12. Working knowledge of Linear Algebra in the context of computer graphics.
-}
-
-\SkillsEntry{Interpersonal}{
-	Multiple years of experience working directly with students tutoring mathematics and computer science. Experience working in a professional context with a moderate sized team of software engineers.
-}
-
-\SkillsEntry{Machine\\Learning}{
-	Experience with machine learning techniques and frameworks such as PyTorch, TensorFlow, and Keras.
-}
-
-\SkillsEntry{Parallel\\Computing}{
-	Experience with parallel computing techniques and frameworks such as OpenMP, MPI, and CUDA on very large compute clusters at Los Alamos National Laboratory.
-}
+\begin{itemize}
+	\item Significant experience developing and optimizing parallel applications using modern C++ and OpenGL, as well as some experience with CUDA, DirectX 12, and OpenMP
+	\item Team experience working on large codebases with multiple developers, diverse target architectures, and complex build systems
+	\item Working knowledge of linear algebra in the context of computer graphics and animation
+\end{itemize}
 
 \end{document}
