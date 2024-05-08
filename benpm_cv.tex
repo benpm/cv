@@ -5,9 +5,9 @@
 % Feel free to distribute this template, but please keep the
 % referal to HowToTeX.com.
 % Date: July 2011
-% 
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% How to use writeLaTeX: 
+% How to use writeLaTeX:
 %
 % You edit the source code here on the left, and the preview on the
 % right shows you the result within a few seconds.
@@ -23,7 +23,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
-							
+
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[protrusion=true,expansion=true]{microtype}
@@ -37,9 +37,8 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{tabularx}
-% \usepackage{showframe}
+\usepackage{enumitem}
 
-\frenchspacing              % Better looking spacings after periods
 \pagestyle{empty}           % No pagenumbers/headers/footers
 
 %%% Custom font
@@ -47,22 +46,32 @@
 \usepackage[sfdefault]{cabin}
 \usepackage[T1]{fontenc}
 
+% Adjust margins
+\geometry{left=1cm, top=0.1cm, right=1cm, bottom=1cm}
+
 %%% Custom sectioning (sectsty package)
 %%% ------------------------------------------------------------
 \usepackage{sectsty}
 
 \sectionfont{%			            % Change font of \section command
+	\noindent
+	\vspace{-8pt}
 	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
-	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
+	\sectionrule{0pt}{0pt}{-4pt}{1pt}}
 
 %%% Colors
 %%% ------------------------------------------------------------
 % https://coolors.co/fdfffc-235789-c1292e-f1d302-161925
 \definecolor{yel}{HTML}{F1D302}
+\definecolor{clr_grey}{HTML}{e0e0e0}
+\definecolor{clr_darkgrey}{HTML}{606060}
 \definecolor{red}{HTML}{C1292E}
 \definecolor{blu}{HTML}{235789}
 \definecolor{blk}{HTML}{161925}
-\hypersetup{colorlinks=true,urlcolor=red}
+
+\hypersetup{
+	colorlinks=true
+}
 
 \makeatletter
 \newcommand{\globalcolor}[1]{%
@@ -72,53 +81,34 @@
 
 \AtBeginDocument{\globalcolor{blk}}
 
-\newtcolorbox{bigredbox}[1][]{
-  enhanced,
-  arc=0pt,
-  outer arc=0pt,
-  colback=red,
-  boxrule=0.8pt,
-  #1
-}
+\setlist{nosep}
+\setlist[itemize]{leftmargin=*}
+\setlist[itemize,1]{label=\textbullet}
 
 %%% Macros
 %%% ------------------------------------------------------------
 \newlength{\spacebox}
 \settowidth{\spacebox}{8888888888}			% Box to align text
-\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
-\newcommand{\sym}{\raisebox{1pt}{$\blacktriangleright$}}
+\newcommand{\sepspace}{\vspace*{0.5em}}		% Vertical space macro
 \newcommand{\showurl}[1]{\href{#1}{#1}}
 
 \newcommand{\MyName}[5]{ % Name
-	\setlength\parskip{0cm}
 	\noindent
-	\begin{minipage}[c]{ 4.1cm }
-		\begin{tcolorbox}[colback=yel,colframe=yel,halign title=left,boxsep=0mm,left=2mm,flush left]
-			\color{blk}
-			\fontsize{90pt}{90pt}\selectfont \usefont{OT1}{phv}{b}{n} cv
-		\end{tcolorbox}
-	\end{minipage}
-	\begin{minipage}[t]{ 10.6cm }
-		\vspace{-3.2em}
-		\hfill \huge \usefont{OT1}{phv}{b}{n} #1
-		\par \hfill \large \usefont{OT1}{phv}{m}{n} \textit{#2} % Subtitle
-		\par \hfill \small \usefont{OT1}{phv}{m}{n} \textit{#3} % Address line 1
-		\par \hfill \small \usefont{OT1}{phv}{m}{n} \textit{#4} % Address line 2
-		\par \hfill \small \usefont{OT1}{phv}{m}{n} \textit{#5} % Address line 3
-	\end{minipage}
-	\par \normalsize \normalfont
+	\begin{tcolorbox}[colback=yel,colframe=yel,halign title=left,boxsep=0mm]
+		\huge \usefont{OT1}{phv}{b}{n} #1 \hfill
+		\large \usefont{OT1}{phv}{m}{n} \textit{#2}
+		\vspace{-2pt}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\normalsize \normalfont
 }
 
-\newcommand{\NewPart}[1]{\section*{\sym \mbox{} \MakeUppercase{#1}}}
+\newcommand{\NewPart}[1]{
+	\vspace{-1em}
+	\section*{#1}
+}
 
-\newcommand{\PersonalEntry}[2]{
-		\noindent\hangindent=2em\hangafter=0 % Indentation
-		\parbox{\spacebox}{        % Box to align text
-		\textit{#1}}		       % Entry name (birth, address, etc.)
-		\hspace{1.5em} #2 \par
-		\sepspace}
-
-\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+\newcommand{\SkillsEntry}[2]{
 		\noindent
 		\begin{tabularx}{\linewidth}{ p{7em} X }
 			\noindent
@@ -126,24 +116,23 @@
 				\textbf{#1}
 			\end{minipage} &
 			\noindent \normalfont \small #2
-		\end{tabularx}
-		\sepspace}
-		
+		\end{tabularx}}
+
 \newcommand{\EducationEntry}[5]{
-		\Large \noindent \textbf{#1} \hfill \\   % Degree
+		\large \noindent \textbf{#1} \hfill
+		\tcbset{colback=clr_grey,colframe=clr_grey,nobeforeafter,box align=base,size=fbox}
+		\tcbox{\small \color{clr_darkgrey}#3} \par
 		\normalsize \noindent \textit{#2} \hfill	  % School
-		\colorbox{yel}{\color{blk}#3} \par  % Duration
 		\noindent \textit{#4} \par        % School
 		\noindent\hangindent=2em\hangafter=0 \small #5 % Description
 		\normalsize \par
 		\sepspace}
 
-\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
-		\noindent \textbf{#1} \hfill      % Jobname
-		\colorbox{yel}{\color{blk}#2} \par  % Duration
-		\noindent \textit{#3} \par              % Company
-		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
-		\normalsize \par
+\newcommand{\WorkEntry}[4]{
+		\noindent \large \textbf{#1} \small \textit{\color{clr_darkgrey} @ #3} \hfill
+		\noindent \colorbox{clr_grey}{\small \color{clr_darkgrey}#2} \par
+		\noindent \hangindent=0em\hangafter=0 \small #4
+		\normalsize
 		\sepspace}
 
 %%% ------------------------------------------------------------
@@ -152,24 +141,32 @@
 
 \begin{document}
 
-\MyName{BENJAMIN MASTRIPOLITO}{benpm@cs.utah.edu}{1304 E 900 S Apt 2}{Salt Lake City, UT 84105}{USA}
+\MyName{Benjamin Mastripolito}{benpm@cs.utah.edu \(\star\) \showurl{https://benpm.github.io}}
 
 \sepspace
 
 
 %%% Education
 %%% ------------------------------------------------------------
-\NewPart{Education}{}
+\NewPart{Education}
 
-\EducationEntry{University of Utah}{University of Utah}{August 2024}{Advisor: Dr. Cem Yuksel, 3.9 GPA}
+\EducationEntry
+{MS Computing (Graphics \& Visualization Track)}
+{University of Utah}
+{Aug 2022 - July 2024}
+{3.9 GPA}
 
-\EducationEntry{Bachelors of Science in Computer Science}{New Mexico Institute of Mining and Technology (NMT)}{May 2020}{3.79 GPA}
+\EducationEntry
+{BS Computer Science}
+{New Mexico Institute of Mining and Technology (NMT)}
+{Aug 2016 - May 2020}
+{3.79 GPA}
 
 
 
 %%% Work experience
 %%% ------------------------------------------------------------
-\NewPart{Work Experience}{}
+\NewPart{Work Experience}
 
 \WorkEntry{Research Assistant}
 {Fall 2023 - May 2024}{University of Utah}{\noindent
@@ -220,19 +217,15 @@
 
 %%% Publications
 %%% ------------------------------------------------------------
-\NewPart{Publications}{}
+\NewPart{Publications}
 
 \WorkEntry{\href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{SIMD-Optimized Search Over Sorted Data}}
 {November 2021}{Los Alamos National Laboratory}
 
 
-% p
-
-\pagebreak
-
 %%% Projects
 %%% ------------------------------------------------------------
-\NewPart{Portfolio}{}
+\NewPart{Portfolio}
 
 \WorkEntry{Petting Zoo}{Ongoing}{\showurl{https://github.com/TheFutureGadgetsLab/PettingZoo}}{
 	Machine learning environment with procedurally generated platformer levels.
@@ -265,7 +258,7 @@
 
 %%% Skills
 %%% ------------------------------------------------------------
-\NewPart{Skills}{}
+\NewPart{Skills}
 
 \SkillsEntry{C / C++}{
 	Extensive experience working in the C and C++ programming languages in both academic and professional settings.
