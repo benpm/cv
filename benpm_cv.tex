@@ -179,11 +179,11 @@
 \NewPart{Professional Experience}
 
 \WorkEntry{Graduate Research Assistant}
-{Fall 2023 - ...}{University of Utah}{\noindent
-	Research with Dr. Cem Yuksel (\textit{cem@cemyuksel.com}) on building a more intuitive 3D modeling methodology
+{Fall 2023 - Now}{University of Utah}{\noindent
+	Research with Dr. Cem Yuksel (\textit{cem@cemyuksel.com}) on a novel, intuitive 3D modeling methodology combining workflows from polygonal modeling, CAD, and sculpting.
 	\begin{itemize}
-		\item Co-wrote a 3D modeling application in C++ and OpenGL
-		\item Implemented a compact half-edge mesh representation, reducing 36 to 16 bytes per triangle
+		\item Co-wrote a fully functional 3D modeling application in C++ and OpenGL as a preliminary for a future user study and publication
+		\item Implemented a bespoke half-edge mesh representation scheme, reducing 36 to 16 bytes per triangle, minimizing GPU memory transfer overhead during modeling tasks such as extrusion and slicing, which were implemented using compute shaders
 		\item Implemented mesh editing tools such as extrusion, scale, translate, rotate, manipulation of geometry using harmonic weight calculation to preserve mesh details
 	\end{itemize}
 }
@@ -191,15 +191,14 @@
 \WorkEntry{Post-Baccalaureate Student}
 {June 2020 - July 2022}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
-		\item Research on parallel interpolation algorithms for physical equation-of-state data under mentorship of Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov})
-		\item Published \href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{"SIMD-Optimized Search Over Sorted Data"} in ASME Computing and Engineering, in which I developed a SIMD-optimized logarithm-based search algorithm that improved over binary search by 100\% in vectorized contexts
+		\item Researched parallel interpolation algorithms for large scientific data sets under the mentorship of Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov}), publishing \href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{"SIMD-Optimized Search Over Sorted Data"} in ASME Computing and Engineering. The result was a SIMD-optimized binning and search algorithm that improved over binary search by 110\% in vectorized contexts.
 	\end{itemize}
 }
 
 \WorkEntry{Undergraduate Research Assistant}
 {Jan 2019 - June 2020}{New Mexico Institute of Mining and Technology}{\noindent
 	\begin{itemize}
-		\item Worked with Dr. Denis Cohen (\textit{denis.cohen@gmail.com}), and a fellow student to rewrite, parallelize, and optimize a complex 3D landslide simulation from scratch, while redesigning it to operate on unstructured meshes rather than a regular grid.
+		\item Worked with Dr. Denis Cohen (\textit{denis.cohen@gmail.com}), and a fellow student to rewrite a complex 3D landslide simulation from scratch, while redesigning it to operate in parallel on unstructured meshes rather than a regular grid. We reduced the runtime for large datasets by 80\% while eliminating nearly 50\% of the code.
 	\end{itemize}
 }
 
@@ -218,8 +217,8 @@
 \ProjectEntry{Elastic Hair Simulation and Rendering}
 {https://github.com/alpers-git/StrandStorm}{2023}{
 	\begin{itemize}
-		\item Implemented an interactive hair simulation using discrete elastic rods, and rigid-body collision using position-based dynamics. Wrote an OpenGL compute shader able to generate 64 rendered hairs per simulated hair in < 10ms every frame.
-		\item Implemented deep opacity shadow maps, alongside a physically-based hair shading model for realistic hair shading.
+		\item Implemented an interactive hair simulation using discrete elastic rods and rigid-body collisions using position-based dynamics. Wrote an OpenGL compute shader able to generate 64 rendered hairs per simulated hair in < 10ms every frame.
+		\item Implemented deep opacity shadow maps, alongside a physically-based hair shading model for a realistic-appearing result.
 	\end{itemize}
 }
 
@@ -229,14 +228,14 @@
 
 \ProjectEntry{WebGL Compact Cellular Automata}{https://medium.com/better-programming/multi-state-cellular-automata-in-webgl-2bff79bf08fb}{2020}{
 	\begin{itemize}
-		\item Developed a method for storage of arbitrary, multi-state cellular automata rules which exponentially improves on a naive implementation that enumerates all permutations of the sequence of neighbor quantities.
-		\item The method is able to store and retrieve rules into textures, with a practical maximum 14 states into less than \(2^{25}\) bits - a single 4k byte texture. A naive implementation would require nearly \(2^{44}\) bits. Outside the constraints of 4k texture, the method generalizes to any number of states, and any size of neighborhood, not just the standard 8-cell 2D moore neighborhood.
+		\item Developed a method for storage of arbitrary, multi-state cellular automata rules which exponentially improves on naive implementations that rely on enumerating permutations of neighbor sequences.
+		\item The method is able to store and retrieve rules from 4k textures, with a maximum of 14 states fitting into less than \(2^{25}\) bits. A naive implementation would require nearly \(2^{44}\) bits. Outside the constraints of a 4k texture, the method generalizes to any number of states, and any size or dimension of neighborhood, not just the standard 8-cell 2D moore neighborhood.
 	\end{itemize}
 }
 
-\ProjectEntry{Rust Parallel Particle Simulation}
+\ProjectEntry{Fast Particle Simulation}
 {https://github.com/TheFutureGadgetsLab/petri}{2021}{
-	Co-developed a highly optimized parallel particle simulator in Rust, able to simultaneously simulate and render over 1,000,000 colliding particles at interactive frame rates.
+	Co-developed a highly optimized parallel particle simulator in Rust, able to simulate and render over 1,000,000 colliding particles at interactive frame rates.
 }
 
 \ProjectEntry{CUDA Raytracer}
