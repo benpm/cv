@@ -31,7 +31,7 @@
 \usepackage{graphicx}                    % Enable pdflatex
 \usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
 \usepackage{geometry}
-	\textheight=700px                    % Saving trees ;-)
+	\textheight=600px                    % Saving trees ;-)
 \usepackage{tcolorbox}
 \usepackage{multicol}
 \usepackage{amssymb}
@@ -47,16 +47,12 @@
 \usepackage[T1]{fontenc}
 
 % Adjust margins
-\geometry{left=1cm, top=1cm, right=1cm, bottom=1cm}
-
+\geometry{left=1.0cm, top=1.0cm, right=1.0cm, bottom=1.0cm}
 %%% Custom sectioning (sectsty package)
 %%% ------------------------------------------------------------
 \usepackage{sectsty}
 
-\sectionfont{%			            % Change font of \section command
-	\noindent
-	\vspace{-8pt}
-	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+\sectionfont{
 	\sectionrule{0pt}{0pt}{-4pt}{1pt}}
 
 %%% Colors
@@ -178,34 +174,44 @@
 %%% ------------------------------------------------------------
 \NewPart{Professional Experience}
 
-\WorkEntry{Graduate Research Assistant}
-{Fall 2023 - Now}{University of Utah}{\noindent
-	Research with Dr. Cem Yuksel (\textit{cem@cemyuksel.com}) on a novel, intuitive 3D modeling methodology combining workflows from polygonal modeling, CAD, and sculpting.
+\WorkEntry{Software Developer}
+{May 2025 - January 2026}{OpenSpace}{\noindent
+	Open-source astronomical visualization (OpenSpace); GPU-accelerated rendering for large scientific datasets.
 	\begin{itemize}
-		\item Co-wrote a fully functional 3D modeling application in C++ and OpenGL as a preliminary for a future user study and publication
-		\item Implemented a bespoke half-edge mesh representation scheme, reducing 36 to 16 bytes per triangle, minimizing GPU memory transfer overhead during modeling tasks such as extrusion and slicing, which were implemented using compute shaders
-		\item Implemented mesh editing tools such as extrusion, scale, translate, rotate, manipulation of geometry using harmonic weight calculation to preserve mesh details
+		\item Implemented real-time shadowing for planets and models via cascaded shadow maps.
+		\item Built a post-processing pipeline (tone mapping + mip-based gaussian approximation bloom technique).
+		\item Replaced depth-map ring shadows with ray tracing -based technique. Led to fewer artifacts, and up to 70\% performance improvement.
+	\end{itemize}
+}
+
+\WorkEntry{Graduate Research Assistant}
+{Fall 2023 - Present}{University of Utah}{\noindent
+	Research with Dr. Cem Yuksel (\textit{cem@cemyuksel.com}) on an intuitive 3D modeling method blending polygonal modeling, CAD, and sculpting.
+	\begin{itemize}
+		\item Co-developed a 3D modeling application in C++/OpenGL for a future user study and publication.
+		\item Built a half-edge mesh layout (36 $\to$ 16 bytes/triangle); reduced transfers for compute-shader tools (extrude/slice).
+		\item Implemented editing tools (extrude/scale/translate/rotate) with harmonic weights to preserve detail.
 	\end{itemize}
 }
 
 \WorkEntry{Post-Baccalaureate Student}
 {June 2020 - July 2022}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
-		\item Researched parallel interpolation algorithms for large scientific data sets under the mentorship of Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov}), publishing \href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{"SIMD-Optimized Search Over Sorted Data"} in ASME Computing and Engineering. The result was a SIMD-optimized binning and search algorithm that improved over binary search by 110\% in vectorized contexts.
+		\item Researched SIMD-friendly interpolation/search over sorted scientific data under Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov}). Published \href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{"SIMD-Optimized Search Over Sorted Data"} (ASME C\&E); 110\% faster than binary search in vectorized contexts.
 	\end{itemize}
 }
 
 \WorkEntry{Undergraduate Research Assistant}
 {Jan 2019 - June 2020}{New Mexico Institute of Mining and Technology}{\noindent
 	\begin{itemize}
-		\item Worked with Dr. Denis Cohen (\textit{denis.cohen@gmail.com}), and a fellow student to rewrite a complex 3D landslide simulation from scratch, while redesigning it to operate in parallel on unstructured meshes rather than a regular grid. We reduced the runtime for large datasets by 80\% while eliminating nearly 50\% of the code.
+		\item Rewrote and parallelized a 3D landslide simulation (unstructured meshes); cut runtime 80\% and codebase ~50\%.
 	\end{itemize}
 }
 
 \WorkEntry{Parallel Computing Research Internship}
 {June 2019 - Aug 2019}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
-		\item Worked as a student in the Parallel Computing Summer Research Internship at LANL researching performance analysis techniques on parallel algorithms, under mentorship of Dr. Rao Garimella (\textit{rao@lanl.gov})
+		\item Studied performance analysis of parallel algorithms under Dr. Rao Garimella (\textit{rao@lanl.gov}).
 	\end{itemize}
 }
 
@@ -217,30 +223,26 @@
 \ProjectEntry{Elastic Hair Simulation and Rendering}
 {https://github.com/alpers-git/StrandStorm}{2023}{
 	\begin{itemize}
-		\item Implemented an interactive hair simulation using discrete elastic rods and rigid-body collisions using position-based dynamics. Wrote an OpenGL compute shader able to generate 64 rendered hairs per simulated hair in < 10ms every frame.
-		\item Implemented deep opacity shadow maps, alongside a physically-based hair shading model for a realistic-appearing result.
+		\item Built an interactive hair simulation (discrete elastic rods + PBD collisions); OpenGL compute shader generates 64 render hairs per sim hair in < 10ms/frame.
+		\item Added deep opacity shadow maps and a physically based hair shading model.
 	\end{itemize}
-}
-
-\ProjectEntry{GPU-Accelerated Surface Meshing}{https://github.com/benpm/gl_playground}{2023-2024}{
-	Implemented a dual-mesh isosurface extraction algorithm as well as a surface geometry smoothing scheme using a trilinear interpolation as a multi-stage OpenGL compute shader pipeline. The pipeline is able to generate 0.7 million vertices and triangles in less than 10 milliseconds on modern hardware.
 }
 
 \ProjectEntry{WebGL Compact Cellular Automata}{https://medium.com/better-programming/multi-state-cellular-automata-in-webgl-2bff79bf08fb}{2020}{
 	\begin{itemize}
-		\item Developed a method for storage of arbitrary, multi-state cellular automata rules which exponentially improves on naive implementations that rely on enumerating permutations of neighbor sequences.
-		\item The method is able to store and retrieve rules from 4k textures, with a maximum of 14 states fitting into less than \(2^{25}\) bits. A naive implementation would require nearly \(2^{44}\) bits. Outside the constraints of a 4k texture, the method generalizes to any number of states, and any size or dimension of neighborhood, not just the standard 8-cell 2D moore neighborhood.
+		\item Designed compact storage for multi-state cellular automata rules, avoiding enumeration of neighbor permutations.
+		\item Stores rules in 4k textures; supports up to 14 states in < \(2^{25}\) bits (vs ~\(2^{44}\) naive). Generalizes beyond 2D Moore neighborhoods.
 	\end{itemize}
 }
 
 \ProjectEntry{Fast Particle Simulation}
 {https://github.com/TheFutureGadgetsLab/petri}{2021}{
-	Co-developed a highly optimized parallel particle simulator in Rust, able to simulate and render over 1,000,000 colliding particles at interactive frame rates.
+	Co-developed a parallel particle simulator in Rust; interactive simulation and rendering of >1,000,000 colliding particles.
 }
 
 \ProjectEntry{CUDA Raytracer}
 {https://github.com/benpm/cuda-raytracer}{2020}{
-	Created a parallel raytracing program using NVIDIA CUDA C++ and OpenGL. Supports BSDF materials.
+	Built a CUDA/OpenGL ray tracer with BSDF materials.
 }
 
 
@@ -248,6 +250,6 @@
 %%% ------------------------------------------------------------
 \NewPart{Technical Skills}
 
-Confident with C++, OpenGL, and CMake. Somewhat experienced with CUDA, DirectX 12, OpenMP, Rust, WebGPU, WebGL, and Vulkan. Working knowledge of linear algebra, numerical methods, and parallel algorithm design.
+C++, OpenGL, CMake. Experience with CUDA, DirectX 12, OpenMP, Rust, Vulkan, WebGPU/WebGL. Strong foundations in linear algebra, numerical methods, and parallel algorithms.
 
 \end{document}
