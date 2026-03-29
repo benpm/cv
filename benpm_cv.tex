@@ -22,10 +22,13 @@
 % http://en.wikibooks.org/wiki/LaTeX
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+\documentclass[letterpaper,10pt]{article}
+
+\input{glyphtounicode}
+\pdfgentounicode=1
 
 \usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{amsmath,amsfonts,amsthm}     % Math packages
 \usepackage{graphicx}                    % Enable pdflatex
@@ -33,9 +36,8 @@
 \usepackage{geometry}
 	\textheight=600px                    % Saving trees ;-)
 \usepackage{tcolorbox}
-\usepackage{multicol}
 \usepackage{amssymb}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{tabularx}
 \usepackage{enumitem}
 
@@ -66,7 +68,11 @@
 \definecolor{blk}{HTML}{161925}
 
 \hypersetup{
-	colorlinks=true
+	pdftitle={Benjamin Mastripolito -- Resume},
+	pdfauthor={Benjamin Mastripolito},
+	pdfsubject={Resume},
+	pdfkeywords={C++, OpenGL, CUDA, CMake, DirectX 12, Vulkan, Rust, Parallel Computing, Graphics, Simulation},
+	unicode=true
 }
 
 \makeatletter
@@ -95,11 +101,12 @@
 \newcommand{\sepspace}{\vspace*{0.5em}}		% Vertical space macro
 \newcommand{\showurl}[1]{\href{#1}{#1}}
 
-\newcommand{\MyName}[5]{ % Name
+\newcommand{\MyName}[3]{ % Name
 	\noindent
 	\tcbset{colback=clr_grey,colframe=clr_grey,boxsep=0mm,on line}
 	\tcbox{\huge \usefont{OT1}{phv}{b}{n} #1} \hfill
-	\Large \usefont{OT1}{phv}{m}{n} \textit{#2}
+	\tcbset{colback=white,colframe=white,boxsep=0mm,on line}
+	\tcbox{\small \usefont{OT1}{phv}{m}{n}\begin{tabular}{@{}l@{}}#2\\\href{#3}{#3}\end{tabular}}
 	\normalsize \normalfont
 }
 
@@ -147,9 +154,16 @@
 
 \begin{document}
 
-\MyName{Benjamin Mastripolito}{benpm@cs.utah.edu \(\star\) \href{https://benpm.github.io}{benpm.github.io}}
+\MyName{Benjamin Mastripolito}{benpm@cs.utah.edu}{https://benpm.github.io}
 
 \sepspace
+
+
+%%% Summary
+%%% ------------------------------------------------------------
+\NewPart{Summary}
+
+Graphics and simulation software engineer with experience in C++, OpenGL, CUDA, DirectX 12, Vulkan, and parallel computing. Built GPU-accelerated rendering, scientific visualization, and interactive simulation systems with measurable performance gains.
 
 
 %%% Education
@@ -159,7 +173,7 @@
 \EducationEntry
 {MS Computing, Graphics \& Visualization}
 {University of Utah}
-{Aug 2022 - July 2024}
+{Aug 2022 - Jul 2024}
 {3.9 GPA}
 
 \EducationEntry
@@ -175,7 +189,7 @@
 \NewPart{Professional Experience}
 
 \WorkEntry{Software Developer}
-{May 2025 - January 2026}{OpenSpace}{\noindent
+{May 2025 - Jan 2026}{OpenSpace}{\noindent
 	Open-source astronomical visualization (OpenSpace); GPU-accelerated rendering for large scientific datasets.
 	\begin{itemize}
 		\item Implemented real-time shadowing for planets and models via cascaded shadow maps.
@@ -185,31 +199,31 @@
 }
 
 \WorkEntry{Graduate Research Assistant}
-{Fall 2023 - Present}{University of Utah}{\noindent
+{Aug 2023 - Present}{University of Utah}{\noindent
 	Research with Dr. Cem Yuksel (\textit{cem@cemyuksel.com}) on an intuitive 3D modeling method blending polygonal modeling, CAD, and sculpting.
 	\begin{itemize}
 		\item Co-developed a 3D modeling application in C++/OpenGL for a future user study and publication.
-		\item Built a half-edge mesh layout (36 $\to$ 16 bytes/triangle); reduced transfers for compute-shader tools (extrude/slice).
+		\item Built a half-edge mesh layout (36 to 16 bytes/triangle); reduced transfers for compute-shader tools (extrude/slice).
 		\item Implemented editing tools (extrude/scale/translate/rotate) with harmonic weights to preserve detail.
 	\end{itemize}
 }
 
 \WorkEntry{Post-Baccalaureate Student}
-{June 2020 - July 2022}{Los Alamos National Laboratory}{\noindent
+{Jun 2020 - Jul 2022}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
 		\item Researched SIMD-friendly interpolation/search over sorted scientific data under Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov}). Published \href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{"SIMD-Optimized Search Over Sorted Data"} (ASME C\&E); 110\% faster than binary search in vectorized contexts.
 	\end{itemize}
 }
 
 \WorkEntry{Undergraduate Research Assistant}
-{Jan 2019 - June 2020}{New Mexico Institute of Mining and Technology}{\noindent
+{Jan 2019 - Jun 2020}{New Mexico Institute of Mining and Technology}{\noindent
 	\begin{itemize}
 		\item Rewrote and parallelized a 3D landslide simulation (unstructured meshes); cut runtime 80\% and codebase ~50\%.
 	\end{itemize}
 }
 
 \WorkEntry{Parallel Computing Research Internship}
-{June 2019 - Aug 2019}{Los Alamos National Laboratory}{\noindent
+{Jun 2019 - Aug 2019}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
 		\item Studied performance analysis of parallel algorithms under Dr. Rao Garimella (\textit{rao@lanl.gov}).
 	\end{itemize}
@@ -231,7 +245,7 @@
 \ProjectEntry{WebGL Compact Cellular Automata}{https://medium.com/better-programming/multi-state-cellular-automata-in-webgl-2bff79bf08fb}{2020}{
 	\begin{itemize}
 		\item Designed compact storage for multi-state cellular automata rules, avoiding enumeration of neighbor permutations.
-		\item Stores rules in 4k textures; supports up to 14 states in < \(2^{25}\) bits (vs ~\(2^{44}\) naive). Generalizes beyond 2D Moore neighborhoods.
+		\item Stores rules in 4k textures; supports up to 14 states in under 33 million bits (vs about 17 trillion in a naive approach). Generalizes beyond 2D Moore neighborhoods.
 	\end{itemize}
 }
 
@@ -248,7 +262,7 @@
 
 %%% Skills
 %%% ------------------------------------------------------------
-\NewPart{Technical Skills}
+\NewPart{Skills}
 
 C++, OpenGL, CMake. Experience with CUDA, DirectX 12, OpenMP, Rust, Vulkan, WebGPU/WebGL. Strong foundations in linear algebra, numerical methods, and parallel algorithms.
 
