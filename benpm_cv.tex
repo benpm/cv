@@ -101,12 +101,12 @@
 \newcommand{\sepspace}{\vspace*{0.5em}}		% Vertical space macro
 \newcommand{\showurl}[1]{\href{#1}{#1}}
 
-\newcommand{\MyName}[3]{ % Name
+\newcommand{\MyName}[4]{ % Name
 	\noindent
 	\tcbset{colback=clr_grey,colframe=clr_grey,boxsep=0mm,on line}
 	\tcbox{\huge \usefont{OT1}{phv}{b}{n} #1} \hfill
 	\tcbset{colback=white,colframe=white,boxsep=0mm,on line}
-	\tcbox{\small \usefont{OT1}{phv}{m}{n}\begin{tabular}{@{}l@{}}#2\\\href{#3}{#3}\end{tabular}}
+	\tcbox{\footnotesize \usefont{OT1}{phv}{m}{n}\begin{tabular}{@{}l@{}}#2\\\href{#3}{#3}\\#4\end{tabular}}
 	\normalsize \normalfont
 }
 
@@ -154,7 +154,7 @@
 
 \begin{document}
 
-\MyName{Benjamin Mastripolito}{benpm@cs.utah.edu}{https://benpm.github.io}
+\MyName{Benjamin Mastripolito}{ben\_jpm@pm.me}{https://benpm.github.io}{1912 S Douglas St \#14, Salt Lake City, UT 84105}
 
 \sepspace
 
