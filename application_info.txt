@@ -9,13 +9,13 @@ EDUCATION
 
 MS Computing, Graphics and Visualization
 University of Utah
-Salt Lake City, UT
+Salt Lake City, UT 84112
 Aug 2022 - Jul 2024
 GPA: 3.9
 
 BS Computer Science
 New Mexico Institute of Mining and Technology
-Socorro, NM
+Socorro, NM 87801
 Aug 2016 - May 2020
 GPA: 3.79
 
@@ -23,31 +23,43 @@ GPA: 3.79
 EMPLOYMENT
 
 Software Developer
-OpenSpace
+OpenSpace (open-source project, Linköping University / American Museum of Natural History / University of Utah)
+Remote
 May 2025 - Jan 2026
+Open-source astronomical visualization software OpenSpace. GPU-accelerated rendering for large scientific datasets.
+- Implemented real-time shadowing for planets and models via cascaded shadow maps.
+- Built a post-processing pipeline with tone mapping and mip-based gaussian approximation bloom.
+- Replaced depth-map ring shadows with ray tracing based technique. Led to fewer artifacts and up to 70% performance improvement.
 
 Graduate Research Assistant
 University of Utah
-Salt Lake City, UT
+Salt Lake City, UT 84112
 Aug 2023 - Jan 2026
 Supervisor: Dr. Cem Yuksel, cem@cemyuksel.com
+Research on an intuitive 3D modeling method blending polygonal modeling, CAD, and sculpting.
+- Co-developed a 3D modeling application in C++ and OpenGL for a future user study and publication.
+- Built a half-edge mesh layout, 36 to 16 bytes per triangle. Reduced transfers for compute-shader tools like extrude and slice.
+- Implemented editing tools including extrude, scale, translate, and rotate with harmonic weights to preserve detail.
 
 Post-Baccalaureate Student
 Los Alamos National Laboratory
-Los Alamos, NM
+Los Alamos, NM 87545
 Jun 2020 - Jul 2022
 Supervisor: Dr. Daniel Sheppard, danielsheppard@lanl.gov
+- Researched SIMD-friendly interpolation and search over sorted scientific data. Published "SIMD-Optimized Search Over Sorted Data" in ASME Computing and Engineering. 110% faster than binary search in vectorized contexts.
 
 Undergraduate Research Assistant
 New Mexico Institute of Mining and Technology
-Socorro, NM
+Socorro, NM 87801
 Jan 2019 - Jun 2020
+- Rewrote and parallelized a 3D landslide simulation on unstructured meshes. Cut runtime 80% and codebase by about 50%.
 
 Parallel Computing Research Internship
 Los Alamos National Laboratory
-Los Alamos, NM
+Los Alamos, NM 87545
 Jun 2019 - Aug 2019
 Supervisor: Dr. Rao Garimella, rao@lanl.gov
+- Studied performance analysis of parallel algorithms.
 
 
 PROJECTS
@@ -55,15 +67,21 @@ PROJECTS
 Elastic Hair Simulation and Rendering
 2023
 https://github.com/alpers-git/StrandStorm
+- Built an interactive hair simulation using discrete elastic rods and PBD collisions. OpenGL compute shader generates 64 render hairs per sim hair in under 10ms per frame.
+- Added deep opacity shadow maps and a physically based hair shading model.
 
 WebGL Compact Cellular Automata
 2020
 https://medium.com/better-programming/multi-state-cellular-automata-in-webgl-2bff79bf08fb
+- Designed compact storage for multi-state cellular automata rules. Avoids enumeration of neighbor permutations.
+- Stores rules in 4k textures. Supports up to 14 states in under 33 million bits, versus about 17 trillion in a naive approach. Generalizes beyond 2D Moore neighborhoods.
 
 Fast Particle Simulation
 2021
 https://github.com/TheFutureGadgetsLab/petri
+Co-developed a parallel particle simulator in Rust. Interactive simulation and rendering of over 1,000,000 colliding particles.
 
 CUDA Raytracer
 2020
 https://github.com/benpm/cuda-raytracer
+Built a CUDA/OpenGL ray tracer with BSDF materials.
