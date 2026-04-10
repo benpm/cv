@@ -178,7 +178,7 @@ Graphics and simulation software engineer with experience in C++, OpenGL, CUDA, 
 
 \EducationEntry
 {BS Computer Science}
-{New Mexico Institute of Mining and Technology (NMT)}
+{New Mexico Institute of Mining and Technology}
 {Aug 2016 - May 2020}
 {3.79 GPA}
 
@@ -190,42 +190,42 @@ Graphics and simulation software engineer with experience in C++, OpenGL, CUDA, 
 
 \WorkEntry{Software Developer}
 {May 2025 - Jan 2026}{OpenSpace}{\noindent
-	Open-source astronomical visualization (OpenSpace); GPU-accelerated rendering for large scientific datasets.
+	Open-source astronomical visualization software OpenSpace. GPU-accelerated rendering for large scientific datasets.
 	\begin{itemize}
 		\item Implemented real-time shadowing for planets and models via cascaded shadow maps.
-		\item Built a post-processing pipeline (tone mapping + mip-based gaussian approximation bloom technique).
-		\item Replaced depth-map ring shadows with ray tracing -based technique. Led to fewer artifacts, and up to 70\% performance improvement.
+		\item Built a post-processing pipeline with tone mapping and mip-based gaussian approximation bloom.
+		\item Replaced depth-map ring shadows with ray tracing based technique. Led to fewer artifacts and up to 70\% performance improvement.
 	\end{itemize}
 }
 
 \WorkEntry{Graduate Research Assistant}
 {Aug 2023 - January 2026}{University of Utah}{\noindent
-	Research with Dr. Cem Yuksel (\textit{cem@cemyuksel.com}) on an intuitive 3D modeling method blending polygonal modeling, CAD, and sculpting.
+	Research with Dr. Cem Yuksel on an intuitive 3D modeling method blending polygonal modeling, CAD, and sculpting.
 	\begin{itemize}
-		\item Co-developed a 3D modeling application in C++/OpenGL for a future user study and publication.
-		\item Built a half-edge mesh layout (36 to 16 bytes/triangle); reduced transfers for compute-shader tools (extrude/slice).
-		\item Implemented editing tools (extrude/scale/translate/rotate) with harmonic weights to preserve detail.
+		\item Co-developed a 3D modeling application in C++ and OpenGL for a future user study and publication.
+		\item Built a half-edge mesh layout, 36 to 16 bytes per triangle. Reduced transfers for compute-shader tools like extrude and slice.
+		\item Implemented editing tools including extrude, scale, translate, and rotate with harmonic weights to preserve detail.
 	\end{itemize}
 }
 
 \WorkEntry{Post-Baccalaureate Student}
 {Jun 2020 - Jul 2022}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
-		\item Researched SIMD-friendly interpolation/search over sorted scientific data under Dr. Daniel Sheppard (\textit{danielsheppard@lanl.gov}). Published \href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{"SIMD-Optimized Search Over Sorted Data"} (ASME C\&E); 110\% faster than binary search in vectorized contexts.
+		\item Researched SIMD-friendly interpolation and search over sorted scientific data under Dr. Daniel Sheppard. Published \href{https://asmedigitalcollection.asme.org/computingengineering/article-abstract/22/2/021009/1121736/simd-Optimized-Search-Over-Sorted-Data}{"SIMD-Optimized Search Over Sorted Data"} in ASME Computing and Engineering. 110\% faster than binary search in vectorized contexts.
 	\end{itemize}
 }
 
 \WorkEntry{Undergraduate Research Assistant}
 {Jan 2019 - Jun 2020}{New Mexico Institute of Mining and Technology}{\noindent
 	\begin{itemize}
-		\item Rewrote and parallelized a 3D landslide simulation (unstructured meshes); cut runtime 80\% and codebase ~50\%.
+		\item Rewrote and parallelized a 3D landslide simulation on unstructured meshes. Cut runtime 80\% and codebase by about 50\%.
 	\end{itemize}
 }
 
 \WorkEntry{Parallel Computing Research Internship}
 {Jun 2019 - Aug 2019}{Los Alamos National Laboratory}{\noindent
 	\begin{itemize}
-		\item Studied performance analysis of parallel algorithms under Dr. Rao Garimella (\textit{rao@lanl.gov}).
+		\item Studied performance analysis of parallel algorithms under Dr. Rao Garimella.
 	\end{itemize}
 }
 
@@ -237,21 +237,21 @@ Graphics and simulation software engineer with experience in C++, OpenGL, CUDA, 
 \ProjectEntry{Elastic Hair Simulation and Rendering}
 {https://github.com/alpers-git/StrandStorm}{2023}{
 	\begin{itemize}
-		\item Built an interactive hair simulation (discrete elastic rods + PBD collisions); OpenGL compute shader generates 64 render hairs per sim hair in < 10ms/frame.
+		\item Built an interactive hair simulation using discrete elastic rods and PBD collisions. OpenGL compute shader generates 64 render hairs per sim hair in under 10ms per frame.
 		\item Added deep opacity shadow maps and a physically based hair shading model.
 	\end{itemize}
 }
 
 \ProjectEntry{WebGL Compact Cellular Automata}{https://medium.com/better-programming/multi-state-cellular-automata-in-webgl-2bff79bf08fb}{2020}{
 	\begin{itemize}
-		\item Designed compact storage for multi-state cellular automata rules, avoiding enumeration of neighbor permutations.
-		\item Stores rules in 4k textures; supports up to 14 states in under 33 million bits (vs about 17 trillion in a naive approach). Generalizes beyond 2D Moore neighborhoods.
+		\item Designed compact storage for multi-state cellular automata rules. Avoids enumeration of neighbor permutations.
+		\item Stores rules in 4k textures. Supports up to 14 states in under 33 million bits, versus about 17 trillion in a naive approach. Generalizes beyond 2D Moore neighborhoods.
 	\end{itemize}
 }
 
 \ProjectEntry{Fast Particle Simulation}
 {https://github.com/TheFutureGadgetsLab/petri}{2021}{
-	Co-developed a parallel particle simulator in Rust; interactive simulation and rendering of >1,000,000 colliding particles.
+	Co-developed a parallel particle simulator in Rust. Interactive simulation and rendering of over 1,000,000 colliding particles.
 }
 
 \ProjectEntry{CUDA Raytracer}
